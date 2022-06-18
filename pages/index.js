@@ -12,7 +12,7 @@ const userDetails = [
 
 function Child(props) {
   function onChange(event) {
-    props.onChange({ type: props.Name, action: event.target.value });
+    props.onChange({ Name: props.Name, Value: event.target.value });
   }
   return (
     <div>
@@ -28,9 +28,9 @@ function Child(props) {
 
 function reducer(state, action) {
   state = state.map((i) => ({ ...i }));
-  let record = state.find((i) => i.Name === action.type);
-  record.Value = action.action;
-  return [...state];
+  let record = state.find((i) => i.Name === action.Name);
+  record.Value = action.Value;
+  return state;
 }
 
 export default function Home() {
